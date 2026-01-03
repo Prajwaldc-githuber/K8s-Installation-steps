@@ -55,6 +55,9 @@ sudo apt-mark hold kubelet kubeadm kubectl
 
 sudo systemctl enable --now kubelet
 
+sudo apt update
+sudo apt install -y conntrack
+
 ********************************************************************************
 
 Once all the above steps are done on all the nodes, run below commands on mentioned nodes
@@ -63,12 +66,11 @@ Once all the above steps are done on all the nodes, run below commands on mentio
 Below block of steps only on master
 
 *********************************only on master************************************************
-
 sudo kubeadm init
 #When complete, you’ll see a kubeadm join ... command — copy that for joining workers.
 
-kubeadm join 172.31.44.122:6443 --token a1zawk.s2c9z7ry0f9p77e2 \
-        --discovery-token-ca-cert-hash sha256:1450e38b9adf66c7f2a67015b166afb120ca388d211308bdaf5b3883c0122669
+kubeadm join 172.31.37.93:6443 --token kuc8b9.fxkp11mza0y3bdj1 \
+        --discovery-token-ca-cert-hash sha256:3c7861dd3d9fdb572a7576fc0dde454ee9df0fb858d7aa3685993b495900b397
 
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
@@ -98,8 +100,8 @@ Below block of steps only on Worker
 #On each worker node, run the command shown at the end of kubeadm init, e.g.:
 #below command should be picked from ur kubeadm init command output
 
-kubeadm join 172.31.44.122:6443 --token a1zawk.s2c9z7ry0f9p77e2 \
-        --discovery-token-ca-cert-hash sha256:1450e38b9adf66c7f2a67015b166afb120ca388d211308bdaf5b3883c0122669
+sudo kubeadm join 172.31.37.93:6443 --token kuc8b9.fxkp11mza0y3bdj1 \
+        --discovery-token-ca-cert-hash sha256:3c7861dd3d9fdb572a7576fc0dde454ee9df0fb858d7aa3685993b495900b397
 
 *****************************************************************************
 
