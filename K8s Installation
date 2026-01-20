@@ -69,8 +69,8 @@ Below block of steps only on master
 sudo kubeadm init
 #When complete, you’ll see a kubeadm join ... command — copy that for joining workers.
 
-kubeadm join 172.31.37.93:6443 --token kuc8b9.fxkp11mza0y3bdj1 \
-        --discovery-token-ca-cert-hash sha256:3c7861dd3d9fdb572a7576fc0dde454ee9df0fb858d7aa3685993b495900b397
+kubeadm join 172.31.45.91:6443 --token 60j2h3.q63ycd72i3irayts \
+        --discovery-token-ca-cert-hash sha256:8949baada4fe80987d28c0032a97dc818caf1f5da16ff584e424fe28348804f3
 
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
@@ -100,9 +100,8 @@ Below block of steps only on Worker
 #On each worker node, run the command shown at the end of kubeadm init, e.g.:
 #below command should be picked from ur kubeadm init command output
 
-sudo kubeadm join 172.31.37.93:6443 --token kuc8b9.fxkp11mza0y3bdj1 \
-        --discovery-token-ca-cert-hash sha256:3c7861dd3d9fdb572a7576fc0dde454ee9df0fb858d7aa3685993b495900b397
-
+sudo kubeadm join 172.31.45.91:6443 --token 60j2h3.q63ycd72i3irayts \
+        --discovery-token-ca-cert-hash sha256:8949baada4fe80987d28c0032a97dc818caf1f5da16ff584e424fe28348804f3
 *****************************************************************************
 
 Finally, verify on the master:
